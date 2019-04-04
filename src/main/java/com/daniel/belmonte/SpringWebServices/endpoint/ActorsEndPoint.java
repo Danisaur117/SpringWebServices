@@ -9,6 +9,8 @@ import com.daniel.belmonte.com.gs_ws.GetActorByFirstNameRequest;
 import com.daniel.belmonte.com.gs_ws.GetActorByFirstNameResponse;
 import com.daniel.belmonte.com.gs_ws.GetActorByLastNameRequest;
 import com.daniel.belmonte.com.gs_ws.GetActorByLastNameResponse;
+import com.daniel.belmonte.com.gs_ws.GetActorRequest;
+import com.daniel.belmonte.com.gs_ws.GetActorResponse;
 import com.daniel.belmonte.gs_ws.GetActorByIdRequest;
 import com.daniel.belmonte.gs_ws.GetActorByIdResponse;
 
@@ -18,6 +20,13 @@ public class ActorsEndPoint {
 	
 	public ActorsEndPoint() {
 		
+	}
+	
+	@PayloadRoot(namespace=NAMESPACE_URI, localPart="getActorRequest")
+	@ResponsePayload
+	public GetActorResponse getActor(@RequestPayload GetActorRequest request) {
+		GetActorResponse response = new GetActorResponse();
+		return response;
 	}
 	
 	@PayloadRoot(namespace=NAMESPACE_URI, localPart="getActorByIdRequest")

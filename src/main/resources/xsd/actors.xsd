@@ -3,6 +3,16 @@ xmlns:tns="http://www.daniel.belmonte.com/actors-ws"
 targetNamespace="http://daniel.belmonte.com/actors-ws"
 elementFormDefault="qualified">
 
+	<xs:element name="getActorRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="actor_id" type="xs:int"/>
+				<xs:element name="first_name" type="xs:string"/>
+				<xs:element name="last_name" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
 	<xs:element name="getActorByIdRequest">
 		<xs:complexType>
 			<xs:sequence>
@@ -23,6 +33,17 @@ elementFormDefault="qualified">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="last_name" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="getActorResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="actor_id" type="xs:int" />
+				<xs:element name="first_name" type="xs:string" />
+				<xs:element name="last_name" type="xs:string" />
+				<xs:element name="last_update" type="xs:dateTime" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
