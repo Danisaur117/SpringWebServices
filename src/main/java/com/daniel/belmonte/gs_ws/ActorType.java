@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.2.7 
 // Visite <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2019.04.04 a las 01:16:16 PM CEST 
+// Generado el: 2019.04.04 a las 05:54:22 PM CEST 
 //
 
 
@@ -11,7 +11,9 @@ package com.daniel.belmonte.gs_ws;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -27,6 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="actor_id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="first_name" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="last_name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="last_update" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -39,7 +42,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "actorType", propOrder = {
     "actorId",
     "firstName",
-    "lastName"
+    "lastName",
+    "lastUpdate"
 })
 public class ActorType {
 
@@ -49,6 +53,9 @@ public class ActorType {
     protected String firstName;
     @XmlElement(name = "last_name", required = true)
     protected String lastName;
+    @XmlElement(name = "last_update", required = true)
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar lastUpdate;
 
     /**
      * Obtiene el valor de la propiedad actorId.
@@ -112,6 +119,30 @@ public class ActorType {
      */
     public void setLastName(String value) {
         this.lastName = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad lastUpdate.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getLastUpdate() {
+        return lastUpdate;
+    }
+
+    /**
+     * Define el valor de la propiedad lastUpdate.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setLastUpdate(XMLGregorianCalendar value) {
+        this.lastUpdate = value;
     }
 
 }

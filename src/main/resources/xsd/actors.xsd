@@ -3,12 +3,24 @@ xmlns:tns="http://www.daniel.belmonte.com/actors-ws"
 targetNamespace="http://daniel.belmonte.com/actors-ws"
 elementFormDefault="qualified">
 
-	<xs:element name="getActorRequest">
+	<xs:element name="updateActorsRequest">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="actor_id" type="xs:int"/>
 				<xs:element name="first_name" type="xs:string"/>
 				<xs:element name="last_name" type="xs:string"/>
+				<xs:element name="last_update" type="xs:dateTime" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="updateActorsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="actor_id" type="xs:int" />
+				<xs:element name="first_name" type="xs:string" />
+				<xs:element name="last_name" type="xs:string" />
+				<xs:element name="last_update" type="xs:dateTime" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -20,57 +32,8 @@ elementFormDefault="qualified">
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
-	<xs:element name="getActorByFirstNameRequest">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="first_name" type="xs:string"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	
-	<xs:element name="getActorByLastNameRequest">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="last_name" type="xs:string"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	
-	<xs:element name="getActorResponse">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="actor_id" type="xs:int" />
-				<xs:element name="first_name" type="xs:string" />
-				<xs:element name="last_name" type="xs:string" />
-				<xs:element name="last_update" type="xs:dateTime" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
 
 	<xs:element name="getActorByIdResponse">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="actor_id" type="xs:int" />
-				<xs:element name="first_name" type="xs:string" />
-				<xs:element name="last_name" type="xs:string" />
-				<xs:element name="last_update" type="xs:dateTime" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	
-	<xs:element name="getActorByFirstNameResponse">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="actor_id" type="xs:int" />
-				<xs:element name="first_name" type="xs:string" />
-				<xs:element name="last_name" type="xs:string" />
-				<xs:element name="last_update" type="xs:dateTime" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-	
-	<xs:element name="getActorByLastNameResponse">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="actor_id" type="xs:int" />

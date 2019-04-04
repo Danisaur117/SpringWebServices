@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="c46ccf4e-5a51-4b3f-b561-8a9574929a0b" activeEnvironment="Default" name="PruebaWebService" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="951c20bb-4f0b-47af-bd71-048ec57a3b18" wsaVersion="NONE" name="ActorsPortSoap11" type="wsdl" bindingName="{http://dani.belmonte.com/actors-ws}ActorsPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/actors.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/actors.wsdl"><con:part><con:url>http://localhost:8080/ws/actors.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://dani.belmonte.com/actors-ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://daniel.belmonte.com/actors-ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://dani.belmonte.com/actors-ws">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://daniel.belmonte.com/actors-ws" xmlns:tns="http://www.daniel.belmonte.com/actors-ws" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getActorRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="actor_id" type="xs:int"/>
+            <xs:element name="first_name" type="xs:string"/>
+            <xs:element name="last_name" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getActorByIdRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="actor_id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getActorByFirstNameRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="first_name" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getActorByLastNameRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="last_name" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getActorResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="actor_id" type="xs:int"/>
+            <xs:element name="first_name" type="xs:string"/>
+            <xs:element name="last_name" type="xs:string"/>
+            <xs:element name="last_update" type="xs:dateTime"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getActorByIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="actor_id" type="xs:int"/>
+            <xs:element name="first_name" type="xs:string"/>
+            <xs:element name="last_name" type="xs:string"/>
+            <xs:element name="last_update" type="xs:dateTime"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getActorByFirstNameResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="actor_id" type="xs:int"/>
+            <xs:element name="first_name" type="xs:string"/>
+            <xs:element name="last_name" type="xs:string"/>
+            <xs:element name="last_update" type="xs:dateTime"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getActorByLastNameResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="actor_id" type="xs:int"/>
+            <xs:element name="first_name" type="xs:string"/>
+            <xs:element name="last_name" type="xs:string"/>
+            <xs:element name="last_update" type="xs:dateTime"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="actorType">
+        <xs:sequence>
+          <xs:element name="actor_id" type="xs:int"/>
+          <xs:element name="first_name" type="xs:string"/>
+          <xs:element name="last_name" type="xs:string"/>
+          <xs:element name="last_update" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getActorRequest">
+    <wsdl:part element="sch:getActorRequest" name="getActorRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActorByIdRequest">
+    <wsdl:part element="sch:getActorByIdRequest" name="getActorByIdRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActorByIdResponse">
+    <wsdl:part element="sch:getActorByIdResponse" name="getActorByIdResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActorByLastNameRequest">
+    <wsdl:part element="sch:getActorByLastNameRequest" name="getActorByLastNameRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActorByFirstNameRequest">
+    <wsdl:part element="sch:getActorByFirstNameRequest" name="getActorByFirstNameRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActorResponse">
+    <wsdl:part element="sch:getActorResponse" name="getActorResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActorByFirstNameResponse">
+    <wsdl:part element="sch:getActorByFirstNameResponse" name="getActorByFirstNameResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getActorByLastNameResponse">
+    <wsdl:part element="sch:getActorByLastNameResponse" name="getActorByLastNameResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ActorsPort">
+    <wsdl:operation name="getActor">
+      <wsdl:input message="tns:getActorRequest" name="getActorRequest"></wsdl:input>
+      <wsdl:output message="tns:getActorResponse" name="getActorResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActorById">
+      <wsdl:input message="tns:getActorByIdRequest" name="getActorByIdRequest"></wsdl:input>
+      <wsdl:output message="tns:getActorByIdResponse" name="getActorByIdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActorByLastName">
+      <wsdl:input message="tns:getActorByLastNameRequest" name="getActorByLastNameRequest"></wsdl:input>
+      <wsdl:output message="tns:getActorByLastNameResponse" name="getActorByLastNameResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActorByFirstName">
+      <wsdl:input message="tns:getActorByFirstNameRequest" name="getActorByFirstNameRequest"></wsdl:input>
+      <wsdl:output message="tns:getActorByFirstNameResponse" name="getActorByFirstNameResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ActorsPortSoap11" type="tns:ActorsPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getActor">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getActorRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getActorResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActorById">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getActorByIdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getActorByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActorByLastName">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getActorByLastNameRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getActorByLastNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActorByFirstName">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getActorByFirstNameRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getActorByFirstNameResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ActorsPortService">
+    <wsdl:port binding="tns:ActorsPortSoap11" name="ActorsPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws</con:endpoint></con:endpoints><con:operation id="47557a96-2fcd-4143-9a47-fd2e886bbabc" isOneWay="false" action="" name="getActor" bindingOperationName="getActor" type="Request-Response" outputName="getActorResponse" inputName="getActorRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="31e17079-7ae8-4adb-9813-32d6b3516b00" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://Orion:8080/actors</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:act="http://daniel.belmonte.com/actors-ws">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <act:getActorRequest>\r
+         <act:actor_id>?</act:actor_id>\r
+         <act:first_name>?</act:first_name>\r
+         <act:last_name>?</act:last_name>\r
+      </act:getActorRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://dani.belmonte.com/actors-ws/ActorsPort/getActorRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="76ebe7c9-478f-41b7-b473-2ea9b9cd80b9" isOneWay="false" action="" name="getActorByFirstName" bindingOperationName="getActorByFirstName" type="Request-Response" outputName="getActorByFirstNameResponse" inputName="getActorByFirstNameRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4826e83e-09e4-41c3-bd54-e84db922cb74" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:act="http://daniel.belmonte.com/actors-ws">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <act:getActorByFirstNameRequest>\r
+         <act:first_name>?</act:first_name>\r
+      </act:getActorByFirstNameRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://dani.belmonte.com/actors-ws/ActorsPort/getActorByFirstNameRequest"/></con:call></con:operation><con:operation id="f50c9404-60fa-405d-ace0-ca1797c79138" isOneWay="false" action="" name="getActorById" bindingOperationName="getActorById" type="Request-Response" outputName="getActorByIdResponse" inputName="getActorByIdRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e00c1b96-d601-44e6-8eff-469950fc317d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:act="http://daniel.belmonte.com/actors-ws">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <act:getActorByIdRequest>\r
+         <act:actor_id>?</act:actor_id>\r
+      </act:getActorByIdRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://dani.belmonte.com/actors-ws/ActorsPort/getActorByIdRequest"/></con:call></con:operation><con:operation id="cd20af91-5f05-4b96-a829-dcacf6221c25" isOneWay="false" action="" name="getActorByLastName" bindingOperationName="getActorByLastName" type="Request-Response" outputName="getActorByLastNameResponse" inputName="getActorByLastNameRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7551b0db-4ffd-49ee-bcf6-82404830d2d4" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:act="http://daniel.belmonte.com/actors-ws">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <act:getActorByLastNameRequest>\r
+         <act:last_name>?</act:last_name>\r
+      </act:getActorByLastNameRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://dani.belmonte.com/actors-ws/ActorsPort/getActorByLastNameRequest"/></con:call></con:operation></con:interface><con:mockService id="a92a2efa-4c24-44fe-9f5e-d97b5c60fbdf" port="8080" path="/" host="Orion" name="MockService 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="getActor" id="47ba8131-7e1e-4793-9c55-be07936760d5" interface="ActorsPortSoap11" operation="getActor"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="70ba3e2c-3a29-4f31-9142-b464a2e8ced5" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:act="http://daniel.belmonte.com/actors-ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <act:getActorResponse>
+         <act:actor_id>?</act:actor_id>
+         <act:first_name>?</act:first_name>
+         <act:last_name>?</act:last_name>
+         <act:last_update>?</act:last_update>
+      </act:getActorResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://dani.belmonte.com/actors-ws/ActorsPort/getActorResponse"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

@@ -5,12 +5,7 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import com.daniel.belmonte.com.gs_ws.GetActorByFirstNameRequest;
-import com.daniel.belmonte.com.gs_ws.GetActorByFirstNameResponse;
-import com.daniel.belmonte.com.gs_ws.GetActorByLastNameRequest;
-import com.daniel.belmonte.com.gs_ws.GetActorByLastNameResponse;
-import com.daniel.belmonte.com.gs_ws.GetActorRequest;
-import com.daniel.belmonte.com.gs_ws.GetActorResponse;
+import com.daniel.belmonte.com.gs_ws.UpdateActorsResponse;
 import com.daniel.belmonte.gs_ws.GetActorByIdRequest;
 import com.daniel.belmonte.gs_ws.GetActorByIdResponse;
 
@@ -22,13 +17,6 @@ public class ActorsEndPoint {
 		
 	}
 	
-	@PayloadRoot(namespace=NAMESPACE_URI, localPart="getActorRequest")
-	@ResponsePayload
-	public GetActorResponse getActor(@RequestPayload GetActorRequest request) {
-		GetActorResponse response = new GetActorResponse();
-		return response;
-	}
-	
 	@PayloadRoot(namespace=NAMESPACE_URI, localPart="getActorByIdRequest")
 	@ResponsePayload
 	public GetActorByIdResponse getActorById(@RequestPayload GetActorByIdRequest request) {
@@ -36,17 +24,14 @@ public class ActorsEndPoint {
 		return response;
 	}
 	
-	@PayloadRoot(namespace=NAMESPACE_URI, localPart="getActorByFirstNameRequest")
+	//REVISAR PARÁMETROS DEL MÉTODO. DEBE RECIBIR 4 PARÁMETROS, BUSCAR POR ID Y ACTUALIZAR EL
+	//CONTENIDO DE LA RESPUESTA
+	@PayloadRoot(namespace=NAMESPACE_URI, localPart="UpdateActorsRequest")
 	@ResponsePayload
-	public GetActorByFirstNameResponse getActorByFirstName(@RequestPayload GetActorByFirstNameRequest request) {
-		GetActorByFirstNameResponse response = new GetActorByFirstNameResponse();
+	public UpdateActorsResponse updateActors(@RequestPayload GetActorByIdRequest request) {
+		UpdateActorsResponse response = new UpdateActorsResponse();
 		return response;
 	}
 	
-	@PayloadRoot(namespace=NAMESPACE_URI, localPart="getActorByLastNameRequest")
-	@ResponsePayload
-	public GetActorByLastNameResponse getActorByLastName(@RequestPayload GetActorByLastNameRequest request) {
-		GetActorByLastNameResponse response = new GetActorByLastNameResponse();
-		return response;
-	}
+	//AÑADIR MÉTODO PARA BORRAR Y MÉTODO PARA INSERTAR
 }
