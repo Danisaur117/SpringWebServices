@@ -46,8 +46,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "lastName",
     "lastUpdate"
 })
-@XmlRootElement(name = "getActorByIdResponse")
-public class GetActorByIdResponse {
+@XmlRootElement(name = "insertActorResponse")
+public class InsertActorResponse {
 
     @XmlElement(name = "actor_id")
     protected int actorId;

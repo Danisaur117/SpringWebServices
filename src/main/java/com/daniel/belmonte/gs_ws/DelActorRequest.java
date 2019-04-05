@@ -38,8 +38,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "actorId"
 })
-@XmlRootElement(name = "getActorByIdRequest")
-public class GetActorByIdRequest {
+@XmlRootElement(name = "delActorRequest")
+public class DelActorRequest {
 
     @XmlElement(name = "actor_id")
     protected int actorId;

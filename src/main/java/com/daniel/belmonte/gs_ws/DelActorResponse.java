@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.2.7 
 // Visite <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2019.04.04 a las 05:54:22 PM CEST 
+// Generado el: 2019.04.05 a las 10:09:24 AM CEST 
 //
 
 
@@ -46,8 +46,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "lastName",
     "lastUpdate"
 })
-@XmlRootElement(name = "updateActorsResponse")
-public class UpdateActorsResponse {
+@XmlRootElement(name = "delActorResponse")
+public class DelActorResponse {
 
     @XmlElement(name = "actor_id")
     protected int actorId;
