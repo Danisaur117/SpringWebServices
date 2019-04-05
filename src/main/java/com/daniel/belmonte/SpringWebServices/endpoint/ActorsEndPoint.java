@@ -1,31 +1,49 @@
 package com.daniel.belmonte.SpringWebServices.endpoint;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import com.daniel.belmonte.SpringWebServices.dao.entity.ActorEntity;
+import com.daniel.belmonte.SpringWebServices.dao.interfaces.ActorEntityInterface;
 import com.daniel.belmonte.com.gs_ws.DelActorRequest;
 import com.daniel.belmonte.com.gs_ws.DelActorResponse;
 import com.daniel.belmonte.com.gs_ws.InsertActorRequest;
 import com.daniel.belmonte.com.gs_ws.InsertActorResponse;
 import com.daniel.belmonte.com.gs_ws.UpdateActorRequest;
 import com.daniel.belmonte.com.gs_ws.UpdateActorResponse;
+import com.daniel.belmonte.gs_ws.ActorType;
 import com.daniel.belmonte.gs_ws.GetActorByIdRequest;
 import com.daniel.belmonte.gs_ws.GetActorByIdResponse;
 
 @Endpoint
 public class ActorsEndPoint {
-	public static final String NAMESPACE_URI="http://dani.belmonte.com/actors-ws";
+	public static final String NAMESPACE_URI="http://www.daniel.belmonte.com/actors-ws";
+	private ActorEntityInterface service;
 	
 	public ActorsEndPoint() {
 		
+	}
+	
+	@Autowired
+	public ActorsEndPoint(ActorEntityInterface service) {
+		this.service = service;
 	}
 	
 	@PayloadRoot(namespace=NAMESPACE_URI, localPart="getActorByIdRequest")
 	@ResponsePayload
 	public GetActorByIdResponse getActorById(@RequestPayload GetActorByIdRequest request) {
 		GetActorByIdResponse response = new GetActorByIdResponse();
+		ActorEntity actorEntity = service.getEntityById(request.getActorId());
+		
+		//BeanUtils.copyProperties(actorEntity, actorType);
+		response.setActorId(actorEntity.getActor_id());
+		response.setFirstName(actorEntity.getFirst_name());
+		response.setLastName(actorEntity.getLast_name());
+		response.setLastUpdate(actorEntity.getLast_update());
+		//HACERLO CON OBJETO ACTORTYPE
 		return response;
 	}
 

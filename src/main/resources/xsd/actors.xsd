@@ -1,6 +1,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 xmlns:tns="http://www.daniel.belmonte.com/actors-ws"
-targetNamespace="http://daniel.belmonte.com/actors-ws"
+targetNamespace="http://www.daniel.belmonte.com/actors-ws"
 elementFormDefault="qualified">
 
 	<xs:element name="getActorByIdRequest">
@@ -17,7 +17,7 @@ elementFormDefault="qualified">
 				<xs:element name="actor_id" type="xs:int" />
 				<xs:element name="first_name" type="xs:string" />
 				<xs:element name="last_name" type="xs:string" />
-				<xs:element name="last_update" type="xs:dateTime" />
+				<xs:element name="last_update" type="xs:date" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

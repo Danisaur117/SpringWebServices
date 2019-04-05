@@ -2,18 +2,19 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.2.7 
 // Visite <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2019.04.05 a las 10:09:24 AM CEST 
+// Generado el: 2019.04.05 a las 01:01:31 PM CEST 
 //
 
 
 package com.daniel.belmonte.gs_ws;
+
+import java.sql.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -55,7 +56,7 @@ public class ActorType {
     protected String lastName;
     @XmlElement(name = "last_update", required = true)
     @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar lastUpdate;
+    protected Date lastUpdate;
 
     /**
      * Obtiene el valor de la propiedad actorId.
@@ -126,10 +127,10 @@ public class ActorType {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public XMLGregorianCalendar getLastUpdate() {
+    public Date getLastUpdate() {
         return lastUpdate;
     }
 
@@ -138,10 +139,10 @@ public class ActorType {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Date }
      *     
      */
-    public void setLastUpdate(XMLGregorianCalendar value) {
+    public void setLastUpdate(Date value) {
         this.lastUpdate = value;
     }
 
