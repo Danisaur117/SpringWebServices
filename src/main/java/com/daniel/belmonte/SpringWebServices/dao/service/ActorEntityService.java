@@ -40,7 +40,9 @@ public class ActorEntityService implements ActorEntityInterface {
 
 	@Override
 	public ActorEntity addEntity(ActorEntity entity) {
-		return this.repository.save(entity);
+		ActorEntity added = this.repository.save(entity);
+		System.out.println("Añadidos: " + repository.count());
+		return added;
 	}
 
 	@Override

@@ -72,11 +72,31 @@ public class ActorsEndPoint {
 		return response;
 	}
 	
-	//AÑADIR MÉTODO PARA BORRAR Y MÉTODO PARA INSERTAR
 	@PayloadRoot(namespace=NAMESPACE_URI, localPart="insertActorRequest")
 	@ResponsePayload
 	public InsertActorResponse insertActor(@RequestPayload InsertActorRequest request) {
 		InsertActorResponse response = new InsertActorResponse();
+		ActorEntity actorEntity = new ActorEntity();
+		ActorType actorType = new ActorType();
+		
+		actorEntity.setFirst_name(request.getFirstName());
+		actorEntity.setLast_name(request.getLastName());
+		actorEntity.setLast_update(new Date());
+		
+		ActorEntity saved = service.addEntity(actorEntity);
+		
+		actorType.setActorId(saved.getActor_id());
+		actorType.setFirstName(saved.getFirst_name());
+		actorType.setLastName(saved.getLast_name());
+		actorType.setLastUpdate(saved.getLast_update());
+		
+		System.out.println("ID: " + actorType.getActorId());
+		System.out.println("F.Name: " + actorType.getFirstName());
+		System.out.println("L.Name: " + actorType.getLastName());
+		System.out.println("Date: " + actorType.getLastUpdate());
+		
+		response.setActorType(actorType);
+		
 		return response;
 	}
 	
