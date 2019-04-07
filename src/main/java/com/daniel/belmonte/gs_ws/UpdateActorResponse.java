@@ -8,13 +8,14 @@
 
 package com.daniel.belmonte.gs_ws;
 
+import java.util.Date;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -57,7 +58,16 @@ public class UpdateActorResponse {
     protected String lastName;
     @XmlElement(name = "last_update", required = true)
     @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar lastUpdate;
+    protected Date lastUpdate;
+    protected boolean updated;
+    @XmlElement(required = true)
+    
+    public void setActorType(ActorType value) {
+    	this.actorId = value.actorId;
+    	this.firstName = value.firstName;
+    	this.lastName = value.lastName;
+    	this.lastUpdate = value.lastUpdate;
+    }
 
     /**
      * Obtiene el valor de la propiedad actorId.
@@ -131,7 +141,7 @@ public class UpdateActorResponse {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getLastUpdate() {
+    public Date getLastUpdate() {
         return lastUpdate;
     }
 
@@ -143,8 +153,24 @@ public class UpdateActorResponse {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setLastUpdate(XMLGregorianCalendar value) {
+    public void setLastUpdate(Date value) {
         this.lastUpdate = value;
     }
 
+    /**
+     * Obtiene el valor de la propiedad updated.
+     * 
+     */
+    public boolean isUpdated() {
+        return updated;
+    }
+
+    /**
+     * Define el valor de la propiedad updated.
+     * 
+     */
+    public void setUpdated(boolean value) {
+        this.updated = value;
+    }
+    
 }

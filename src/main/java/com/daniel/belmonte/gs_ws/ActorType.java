@@ -8,7 +8,7 @@
 
 package com.daniel.belmonte.gs_ws;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

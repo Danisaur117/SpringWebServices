@@ -59,6 +59,13 @@ public class GetActorByIdResponse {
     @XmlElement(name = "last_update", required = true)
     @XmlSchemaType(name = "dateTime")
     protected Date lastUpdate;
+    
+    public void setActorType(ActorType value) {
+    	this.actorId = value.actorId;
+    	this.firstName = value.firstName;
+    	this.lastName = value.lastName;
+    	this.lastUpdate = value.lastUpdate;
+    }
 
     /**
      * Obtiene el valor de la propiedad actorId.
