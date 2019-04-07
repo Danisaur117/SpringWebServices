@@ -57,8 +57,9 @@ public class ActorEntityService implements ActorEntityInterface {
 
 	@Override
 	public Boolean deleteEntity(int id) {
-		// TODO Apéndice de método generado automáticamente
-		return null;
+		this.repository.deleteById(id);
+		
+		return !this.repository.findById(id).isPresent();
 	}
 
 }

@@ -51,10 +51,6 @@ public class ActorsEndPoint {
 		return response;
 	}
 
-	//El objeto UpdateActorsRequest tiene 4 atributos, del cual usaremos el actors_id para
-	//buscar el registro que queremos actualizar. Los datos con los que actualizaremos el
-	//registro serán los otros 3 atributos del objeto. Devolveremos un objeto UpdateActorsResponse
-	//con los atributos que se deben actualizar
 	@PayloadRoot(namespace=NAMESPACE_URI, localPart="updateActorRequest")
 	@ResponsePayload
 	public UpdateActorResponse updateActors(@RequestPayload UpdateActorRequest request) {
@@ -79,9 +75,9 @@ public class ActorsEndPoint {
 		ActorEntity actorEntity = new ActorEntity();
 		ActorType actorType = new ActorType();
 		
-		actorEntity.setFirst_name(request.getFirstName());
-		actorEntity.setLast_name(request.getLastName());
 		actorEntity.setLast_update(new Date());
+		actorEntity.setLast_name(request.getLastName());
+		actorEntity.setFirst_name(request.getFirstName());
 		
 		ActorEntity saved = service.addEntity(actorEntity);
 		
@@ -104,6 +100,10 @@ public class ActorsEndPoint {
 	@ResponsePayload
 	public DelActorResponse delActor(@RequestPayload DelActorRequest request) {
 		DelActorResponse response = new DelActorResponse();
+		
+		Boolean deleted = service.deleteEntity(request.getActorId());
+		response.setDeleted(deleted);
+		
 		return response;
 	}
 }
