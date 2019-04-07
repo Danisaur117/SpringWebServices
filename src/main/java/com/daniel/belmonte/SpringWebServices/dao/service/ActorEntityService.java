@@ -40,14 +40,17 @@ public class ActorEntityService implements ActorEntityInterface {
 
 	@Override
 	public ActorEntity addEntity(ActorEntity entity) {
-		// TODO Apéndice de método generado automáticamente
-		return null;
+		return this.repository.save(entity);
 	}
 
 	@Override
 	public Boolean updateEntity(ActorEntity entity) {
-		// TODO Apéndice de método generado automáticamente
-		return null;
+		ActorEntity actorEntity = this.repository.save(entity);
+
+		if(actorEntity.getLast_update().equals(entity.getLast_update()))
+			return true;
+		else
+			return false;
 	}
 
 	@Override

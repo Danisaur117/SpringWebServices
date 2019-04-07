@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.2.7 
 // Visite <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2019.04.05 a las 01:01:31 PM CEST 
+// Generado el: 2019.04.07 a las 03:41:36 PM CEST 
 //
 
 
@@ -30,7 +30,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="actor_id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="first_name" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="last_name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="last_update" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
+ *         &lt;element name="last_update" type="{http://www.w3.org/2001/XMLSchema}date"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -56,7 +56,7 @@ public class InsertActorResponse {
     @XmlElement(name = "last_name", required = true)
     protected String lastName;
     @XmlElement(name = "last_update", required = true)
-    @XmlSchemaType(name = "dateTime")
+    @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar lastUpdate;
 
     /**

@@ -58,31 +58,16 @@ public class ActorsEndPoint {
 	@PayloadRoot(namespace=NAMESPACE_URI, localPart="updateActorRequest")
 	@ResponsePayload
 	public UpdateActorResponse updateActors(@RequestPayload UpdateActorRequest request) {
-		Boolean updated;
 		UpdateActorResponse response = new UpdateActorResponse();
-		ActorType actorType = new ActorType();
 		ActorEntity actorEntity = new ActorEntity();
-		System.out.println("Rellenando actorEntity");
+		
 		actorEntity.setActor_id(request.getActorId());
 		actorEntity.setFirst_name(request.getFirstName());
 		actorEntity.setLast_name(request.getLastName());
 		actorEntity.setLast_update(new Date());
-		System.out.println("Rellenando actorType");
-		actorType.setActorId(request.getActorId());
-		actorType.setFirstName(request.getFirstName());
-		actorType.setLastName(request.getLastName());
-		actorType.setLastUpdate(new Date());
-		System.out.println("Rellenando response");
-		response.setActorType(actorType);
-		System.out.println("Ejecutando updateEntity");
-		updated = service.updateEntity(actorEntity);
-		if(updated) {
-			System.out.println("Actualizado");
-			response.setUpdated(updated);
-		}
-		else {
-			System.out.println("ERROR");
-		}
+		
+		Boolean updated = service.updateEntity(actorEntity);
+		response.setUpdated(updated);
 		
 		return response;
 	}
