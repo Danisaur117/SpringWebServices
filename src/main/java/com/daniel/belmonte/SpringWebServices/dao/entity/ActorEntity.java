@@ -17,12 +17,21 @@ public class ActorEntity implements Serializable {
 	 */
 	private static final long serialVersionUID = -674819468802499845L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int actor_id;
 	private String first_name;
 	private String last_name;
-	@GeneratedValue
 	private Date last_update;
+	
+	public ActorEntity() {
+		
+	}
+	
+	public ActorEntity(String first_name, String last_name){
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.last_update = new Date();
+	}
 	
 	public int getActor_id() {
 		return actor_id;

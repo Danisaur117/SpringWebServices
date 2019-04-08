@@ -8,6 +8,6 @@ public interface ActorEntityInterface {
 	public ActorEntity getEntityById(int id);
 	public List<ActorEntity> getAllEntities();
 	public ActorEntity addEntity(ActorEntity entity);
-	public Boolean updateEntity(ActorEntity entity);
-	public Boolean deleteEntity(int id);
+	public boolean updateEntity(ActorEntity entity);
+	public boolean deleteEntity(int id);
 }

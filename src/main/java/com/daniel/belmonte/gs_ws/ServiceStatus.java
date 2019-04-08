@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.2.7 
 // Visite <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2019.04.08 a las 01:30:02 PM CEST 
+// Generado el: 2019.04.08 a las 10:35:51 AM CEST 
 //
 
 
@@ -11,22 +11,21 @@ package com.daniel.belmonte.gs_ws;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para anonymous complex type.
+ * <p>Clase Java para serviceStatus complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType>
+ * &lt;complexType name="serviceStatus">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="deleted" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
- *         &lt;element name="serviceStatus" type="{http://www.daniel.belmonte.com/actors-ws}serviceStatus"/>
+ *         &lt;element name="statusCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,55 +35,63 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "deleted",
-    "serviceStatus"
+@XmlType(name = "serviceStatus", propOrder = {
+    "statusCode",
+    "message"
 })
-@XmlRootElement(name = "delActorResponse")
-public class DelActorResponse {
+public class ServiceStatus {
 
-    protected boolean deleted;
     @XmlElement(required = true)
-    protected ServiceStatus serviceStatus;
+    protected String statusCode;
+    @XmlElement(required = true)
+    protected String message;
 
     /**
-     * Obtiene el valor de la propiedad deleted.
-     * 
-     */
-    public boolean isDeleted() {
-        return deleted;
-    }
-
-    /**
-     * Define el valor de la propiedad deleted.
-     * 
-     */
-    public void setDeleted(boolean value) {
-        this.deleted = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad serviceStatus.
+     * Obtiene el valor de la propiedad statusCode.
      * 
      * @return
      *     possible object is
-     *     {@link ServiceStatus }
+     *     {@link String }
      *     
      */
-    public ServiceStatus getServiceStatus() {
-        return serviceStatus;
+    public String getStatusCode() {
+        return statusCode;
     }
 
     /**
-     * Define el valor de la propiedad serviceStatus.
+     * Define el valor de la propiedad statusCode.
      * 
      * @param value
      *     allowed object is
-     *     {@link ServiceStatus }
+     *     {@link String }
      *     
      */
-    public void setServiceStatus(ServiceStatus value) {
-        this.serviceStatus = value;
+    public void setStatusCode(String value) {
+        this.statusCode = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad message.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getMessage() {
+        return message;
+    }
+
+    /**
+     * Define el valor de la propiedad message.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setMessage(String value) {
+        this.message = value;
     }
 
 }

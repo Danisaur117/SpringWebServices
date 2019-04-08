@@ -2,12 +2,14 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.2.7 
 // Visite <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2019.04.08 a las 01:30:02 PM CEST 
+// Generado el: 2019.04.08 a las 12:10:18 PM CEST 
 //
 
 
 package com.daniel.belmonte.gs_ws;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -25,8 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="deleted" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
- *         &lt;element name="serviceStatus" type="{http://www.daniel.belmonte.com/actors-ws}serviceStatus"/>
+ *         &lt;element name="actorType" type="{http://www.daniel.belmonte.com/actors-ws}actorType" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,54 +38,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "deleted",
-    "serviceStatus"
+    "actorType"
 })
-@XmlRootElement(name = "delActorResponse")
-public class DelActorResponse {
+@XmlRootElement(name = "getAllActorsResponse")
+public class GetAllActorsResponse {
 
-    protected boolean deleted;
     @XmlElement(required = true)
-    protected ServiceStatus serviceStatus;
+    protected List<ActorType> actorType;
 
     /**
-     * Obtiene el valor de la propiedad deleted.
+     * Gets the value of the actorType property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the actorType property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getActorType().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ActorType }
+     * 
      * 
      */
-    public boolean isDeleted() {
-        return deleted;
-    }
-
-    /**
-     * Define el valor de la propiedad deleted.
-     * 
-     */
-    public void setDeleted(boolean value) {
-        this.deleted = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad serviceStatus.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ServiceStatus }
-     *     
-     */
-    public ServiceStatus getServiceStatus() {
-        return serviceStatus;
-    }
-
-    /**
-     * Define el valor de la propiedad serviceStatus.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ServiceStatus }
-     *     
-     */
-    public void setServiceStatus(ServiceStatus value) {
-        this.serviceStatus = value;
+    public List<ActorType> getActorType() {
+        if (actorType == null) {
+            actorType = new ArrayList<ActorType>();
+        }
+        return this.actorType;
     }
 
 }

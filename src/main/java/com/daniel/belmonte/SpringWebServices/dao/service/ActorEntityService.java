@@ -28,7 +28,13 @@ public class ActorEntityService implements ActorEntityInterface {
 	
 	@Override
 	public ActorEntity getEntityById(int id) {
-		return this.repository.findById(id).get();
+		try{
+			return this.repository.findById(id).get();
+		}
+		catch(Exception e) {
+			//e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
@@ -40,26 +46,37 @@ public class ActorEntityService implements ActorEntityInterface {
 
 	@Override
 	public ActorEntity addEntity(ActorEntity entity) {
-		ActorEntity added = this.repository.save(entity);
-		System.out.println("Añadidos: " + repository.count());
-		return added;
+		try {
+			return this.repository.save(entity);
+		}
+		catch(Exception e) {
+			//e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
-	public Boolean updateEntity(ActorEntity entity) {
-		ActorEntity actorEntity = this.repository.save(entity);
-
-		if(actorEntity.getLast_update().equals(entity.getLast_update()))
+	public boolean updateEntity(ActorEntity entity) {
+		try {
+			this.repository.save(entity);
 			return true;
-		else
+		}
+		catch(Exception e) {
+			//e.printStackTrace();
 			return false;
+		}
 	}
 
 	@Override
-	public Boolean deleteEntity(int id) {
-		this.repository.deleteById(id);
-		
-		return !this.repository.findById(id).isPresent();
+	public boolean deleteEntity(int id) {
+		try {
+			this.repository.deleteById(id);
+			return true;
+		}
+		catch(Exception e) {
+			//e.printStackTrace();
+			return false;
+		}
 	}
 
 }
