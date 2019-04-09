@@ -10,6 +10,7 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import com.daniel.belmonte.SpringWebServices.controller.ActorController;
 import com.daniel.belmonte.SpringWebServices.dao.entity.ActorEntity;
 import com.daniel.belmonte.SpringWebServices.dao.interfaces.ActorEntityInterface;
 import com.daniel.belmonte.gs_ws.DelActorRequest;
@@ -29,25 +30,26 @@ import com.daniel.belmonte.gs_ws.GetAllActorsResponse;
 public class ActorsEndPoint {
 	public static final String NAMESPACE_URI="http://www.daniel.belmonte.com/actors-ws";
 	private ActorEntityInterface service;
+	private ActorController actorController;
 	
 	public ActorsEndPoint() {
 		
 	}
 	
 	@Autowired
-	public ActorsEndPoint(ActorEntityInterface service) {
+	public ActorsEndPoint(ActorEntityInterface service, ActorController actorController) {
 		this.service = service;
+		this.actorController = actorController;
 	}
 	
 	@PayloadRoot(namespace=NAMESPACE_URI, localPart="getActorByIdRequest")
 	@ResponsePayload
 	public GetActorByIdResponse getActorById(@RequestPayload GetActorByIdRequest request) {
 		GetActorByIdResponse response = new GetActorByIdResponse();
-		ActorEntity actorEntity = service.getEntityById(request.getActorId());
-		ActorType actorType = new ActorType();
+		ActorType actorType = this.actorController.getActorById(request.getActorId());
 		ServiceStatus serviceStatus = new ServiceStatus();
 		
-		if(actorEntity == null) {
+		if(actorType == null) {
 			serviceStatus.setStatusCode("NOT FOUND");
 			serviceStatus.setMessage("Error al buscar la entidad");
 			
@@ -56,11 +58,6 @@ public class ActorsEndPoint {
 			
 			return response;
 		}
-		
-		actorType.setActorId(actorEntity.getActor_id());
-		actorType.setFirstName(actorEntity.getFirst_name());
-		actorType.setLastName(actorEntity.getLast_name());
-		actorType.setLastUpdate(actorEntity.getLast_update());
 		
 		serviceStatus.setStatusCode("SUCCESS");
 		serviceStatus.setMessage("Entidad encontrada correctamente");
@@ -75,21 +72,8 @@ public class ActorsEndPoint {
 	@ResponsePayload
 	public GetAllActorsResponse getAllActors(@RequestPayload GetAllActorsRequest request) {
 		GetAllActorsResponse response = new GetAllActorsResponse();
-		List<ActorType> actorTypeList = new ArrayList<ActorType>();
-		List<ActorEntity> actorEntityList = service.getAllEntities();
 		
-		for(ActorEntity actorEntity : actorEntityList) {
-			ActorType actorType = new ActorType();
-			
-			actorType.setActorId(actorEntity.getActor_id());
-			actorType.setFirstName(actorEntity.getFirst_name());
-			actorType.setLastName(actorEntity.getLast_name());
-			actorType.setLastUpdate(actorEntity.getLast_update());
-			
-			actorTypeList.add(actorType);
-		}
-		
-		response.getActorType().addAll(actorTypeList);
+		response.getActorType().addAll(this.actorController.getAllActors());
 		
 		return response;
 	}
@@ -98,10 +82,10 @@ public class ActorsEndPoint {
 	@ResponsePayload
 	public UpdateActorResponse updateActors(@RequestPayload UpdateActorRequest request) {
 		UpdateActorResponse response = new UpdateActorResponse();
-		ActorEntity actorEntity = service.getEntityById(request.getActorId());
+		Boolean updated = this.actorController.updateActor(request);
 		ServiceStatus serviceStatus = new ServiceStatus();
-		
-		if(actorEntity == null) {
+
+		if(updated == null) {
 			serviceStatus.setStatusCode("NOT FOUND");
 			serviceStatus.setMessage("Error al buscar la entidad");
 			
@@ -110,11 +94,6 @@ public class ActorsEndPoint {
 			
 			return response;
 		}
-		
-		actorEntity.setFirst_name(request.getFirstName());
-		actorEntity.setLast_name(request.getLastName());
-		actorEntity.setLast_update(new Date());
-		boolean updated = service.updateEntity(actorEntity);
 		
 		if(updated == false) {
 			serviceStatus.setStatusCode("CONFLICT");
@@ -139,13 +118,10 @@ public class ActorsEndPoint {
 	@ResponsePayload
 	public InsertActorResponse insertActor(@RequestPayload InsertActorRequest request) {
 		InsertActorResponse response = new InsertActorResponse();
-		ActorEntity actorEntity = new ActorEntity(request.getFirstName(), request.getLastName());
-		ActorType actorType = new ActorType();
-		ServiceStatus serviceStatus = new ServiceStatus();
+		ActorType actorType = this.actorController.addActor(request);
+		ServiceStatus serviceStatus = new ServiceStatus();	
 		
-		ActorEntity saved = service.addEntity(actorEntity);
-		
-		if(saved == null) {
+		if(actorType == null) {
 			serviceStatus.setStatusCode("CONFLICT");
 			serviceStatus.setMessage("Error al añadir la entidad");
 			
@@ -154,11 +130,6 @@ public class ActorsEndPoint {
 			
 			return response;
 		}
-
-		actorType.setActorId(saved.getActor_id());
-		actorType.setFirstName(saved.getFirst_name());
-		actorType.setLastName(saved.getLast_name());
-		actorType.setLastUpdate(saved.getLast_update());
 		
 		serviceStatus.setStatusCode("SUCCESS");
 		serviceStatus.setMessage("Entidad añadida correctamente");
@@ -173,10 +144,10 @@ public class ActorsEndPoint {
 	@ResponsePayload
 	public DelActorResponse delActor(@RequestPayload DelActorRequest request) {
 		DelActorResponse response = new DelActorResponse();
-		ActorEntity actorEntity = service.getEntityById(request.getActorId());
+		Boolean deleted = this.actorController.deleteActor(request.getActorId());
 		ServiceStatus serviceStatus = new ServiceStatus();
-		
-		if(actorEntity == null) {
+
+		if(deleted == null) {
 			serviceStatus.setStatusCode("NOT FOUND");
 			serviceStatus.setMessage("Error al buscar la entidad");
 			
@@ -185,8 +156,6 @@ public class ActorsEndPoint {
 			
 			return response;
 		}
-		
-		boolean deleted = service.deleteEntity(actorEntity.getActor_id());
 		
 		if(deleted == false) {
 			serviceStatus.setStatusCode("CONFLICT");

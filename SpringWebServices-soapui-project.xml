@@ -13,6 +13,19 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element name="actorType" type="tns:actorType"/>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllActorsRequest">
+        <xs:complexType>
+          <xs:sequence></xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllActorsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="actorType" type="tns:actorType"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -29,6 +42,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element name="updated" type="xs:boolean"/>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -43,10 +57,8 @@
       <xs:element name="insertActorResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="actor_id" type="xs:int"/>
-            <xs:element name="first_name" type="xs:string"/>
-            <xs:element name="last_name" type="xs:string"/>
-            <xs:element name="last_update" type="xs:date"/>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="actorType" type="tns:actorType"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -60,10 +72,8 @@
       <xs:element name="delActorResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="actor_id" type="xs:int"/>
-            <xs:element name="first_name" type="xs:string"/>
-            <xs:element name="last_name" type="xs:string"/>
-            <xs:element name="last_update" type="xs:dateTime"/>
+            <xs:element name="deleted" type="xs:boolean"/>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -75,13 +85,25 @@
           <xs:element name="last_update" type="xs:dateTime"/>
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="serviceStatus">
+        <xs:sequence>
+          <xs:element name="statusCode" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
     </xs:schema>
   </wsdl:types>
   <wsdl:message name="updateActorRequest">
     <wsdl:part element="tns:updateActorRequest" name="updateActorRequest"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getAllActorsResponse">
+    <wsdl:part element="tns:getAllActorsResponse" name="getAllActorsResponse"></wsdl:part>
+  </wsdl:message>
   <wsdl:message name="insertActorRequest">
     <wsdl:part element="tns:insertActorRequest" name="insertActorRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllActorsRequest">
+    <wsdl:part element="tns:getAllActorsRequest" name="getAllActorsRequest"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="getActorByIdResponse">
     <wsdl:part element="tns:getActorByIdResponse" name="getActorByIdResponse"></wsdl:part>
@@ -106,6 +128,10 @@
       <wsdl:input message="tns:updateActorRequest" name="updateActorRequest"></wsdl:input>
       <wsdl:output message="tns:updateActorResponse" name="updateActorResponse"></wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllActors">
+      <wsdl:input message="tns:getAllActorsRequest" name="getAllActorsRequest"></wsdl:input>
+      <wsdl:output message="tns:getAllActorsResponse" name="getAllActorsResponse"></wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="insertActor">
       <wsdl:input message="tns:insertActorRequest" name="insertActorRequest"></wsdl:input>
       <wsdl:output message="tns:insertActorResponse" name="insertActorResponse"></wsdl:output>
@@ -127,6 +153,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="updateActorResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllActors">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllActorsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllActorsResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -167,14 +202,14 @@
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <act:delActorRequest>\r
-         <act:actor_id>201</act:actor_id>\r
+         <act:actor_id>204</act:actor_id>\r
       </act:delActorRequest>\r
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.dani.belmonte.com/actors-ws/ActorsPort/delActorRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="3e918020-8333-41a4-a80a-c11cf1ca7fe0" isOneWay="false" action="" name="getActorById" bindingOperationName="getActorById" type="Request-Response" outputName="getActorByIdResponse" inputName="getActorByIdRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cc7d8f66-e87d-4f5a-9a5c-9022a9fe23f8" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:act="http://www.daniel.belmonte.com/actors-ws">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <act:getActorByIdRequest>\r
-         <act:actor_id>6</act:actor_id>\r
+         <act:actor_id>77</act:actor_id>\r
       </act:getActorByIdRequest>\r
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.dani.belmonte.com/actors-ws/ActorsPort/getActorByIdRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="7232cd7e-cc7a-4aea-b692-144ba0925140" isOneWay="false" action="" name="insertActor" bindingOperationName="insertActor" type="Request-Response" outputName="insertActorResponse" inputName="insertActorRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ecd76d4b-0866-4096-b21b-1bb2a850a61a" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:act="http://www.daniel.belmonte.com/actors-ws">\r
@@ -189,9 +224,14 @@
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <act:updateActorRequest>\r
-         <act:actor_id>3</act:actor_id>\r
-         <act:first_name>ED</act:first_name>\r
-         <act:last_name>HARRIS</act:last_name>\r
+         <act:actor_id>201</act:actor_id>\r
+         <act:first_name>JULIA</act:first_name>\r
+         <act:last_name>ROBERTS</act:last_name>\r
       </act:updateActorRequest>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.dani.belmonte.com/actors-ws/ActorsPort/updateActorRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.dani.belmonte.com/actors-ws/ActorsPort/updateActorRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="5335e50a-a3c9-42a3-a982-8865b7e764e8" isOneWay="false" action="" name="getAllActors" bindingOperationName="getAllActors" type="Request-Response" outputName="getAllActorsResponse" inputName="getAllActorsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f1be3f26-35b7-46e4-94c8-4fe4afd1e826" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:act="http://www.daniel.belmonte.com/actors-ws">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <act:getAllActorsRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.daniel.belmonte.com/actors-ws/ActorsPort/getAllActorsRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
