@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.daniel.belmonte.SpringWebServices.dao.entity.ActorEntity;
@@ -21,7 +20,6 @@ public class ActorEntityService implements ActorEntityInterface {
 		
 	}
 	
-	@Autowired
 	public ActorEntityService(ActorEntityRepository repository) {
 		this.repository = repository;
 	}
