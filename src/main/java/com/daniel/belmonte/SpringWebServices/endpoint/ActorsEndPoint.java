@@ -1,9 +1,5 @@
 package com.daniel.belmonte.SpringWebServices.endpoint;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -11,7 +7,6 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.daniel.belmonte.SpringWebServices.controller.ActorController;
-import com.daniel.belmonte.SpringWebServices.dao.entity.ActorEntity;
 import com.daniel.belmonte.SpringWebServices.dao.interfaces.ActorEntityInterface;
 import com.daniel.belmonte.gs_ws.DelActorRequest;
 import com.daniel.belmonte.gs_ws.DelActorResponse;
@@ -29,6 +24,7 @@ import com.daniel.belmonte.gs_ws.GetAllActorsResponse;
 @Endpoint
 public class ActorsEndPoint {
 	public static final String NAMESPACE_URI="http://www.daniel.belmonte.com/actors-ws";
+	@SuppressWarnings("unused")
 	private ActorEntityInterface service;
 	private ActorController actorController;
 	
